@@ -9,8 +9,6 @@ tilde.query.selectAll = function(source,input_array) {
 			j = input_array.length,
 			i;
 		for (i = 0; i < j; i++) {
-			console.log(input_array[i])
-			console.log(tilde[source][input_array[i]])
 			output.push(tilde[source][input_array[i]])
 		}
 		return output

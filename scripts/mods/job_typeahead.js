@@ -31,7 +31,7 @@ $('#job_dropdown .typeahead').bind('typeahead:selected', function(obj, datum, na
     var selection = datum;
     console.log(selection)
     selection = tilde.query.select('auto_data',selection.c)
-    var similars = tilde.query.selectAll('auto_data',selection.similars)
+    var similars = tilde.query.selectAll('auto_data',selection.s)
     console.log(similars)
 });
 
