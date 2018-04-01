@@ -2,7 +2,7 @@
 tilde.occupations = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('n'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    //identify: function(obj){ return obj.n; },
+    identify: function(obj){ return obj.n; },
     local: tilde.occupations
 });
 
