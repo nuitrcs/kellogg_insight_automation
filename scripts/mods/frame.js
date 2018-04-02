@@ -82,6 +82,7 @@ tilde.buildFrame = function() {
 		.attr('fill','white')
 		.attr('stroke','white')
 		.attr('stroke-width',0)
+		.attr('opacity',1)
 		.attr('width',tilde.spacing)
 		.attr('height',tilde.slots_y.rangeBand())
 
@@ -117,7 +118,7 @@ tilde.animate.prePick = function() {
 tilde.animate.preLoop = function(selection) {
 	d3.select(selection)
 		.transition()
-		.duration(2600)
+		.duration(2300)
 		.delay(function(d,i){
 			if (!d.started) {
 				d.started = 1
@@ -143,8 +144,39 @@ tilde.animate.preLoop = function(selection) {
 }
 
 tilde.animate.endLoop = function(selection) {
+	tilde.animate.notice('option_chosen')
+	tilde.boxes
+		.transition()
+		.duration(800)
+		.attr('stroke-width',function(d,i){
+			if (tilde.choice_slots[i+1]) {
+				return 0
+			} else {
+				return tilde.spacing
+			}
+		})
+	tilde.fills
+		.transition()
+		.duration(0)
+		.attr('x',function(d){
+			d.barx = (tilde.width - tilde.margin.left - tilde.margin.right)/2 +tilde.spacing*2
+			d.start = 0
+			return d.barx
+		})
+		.attr('y',function(d){
+			return tilde.slots_y(d.count) + tilde.spacing*2
+		})
+		.attr('width',0)
+		.attr('fill','white')
+		.attr('height',function(d){
+			return tilde.barheight
+		})
 	tilde.bars
 		.transition()
+		.duration(0)
+	tilde.bars
+		.transition()
+		.duration(0)
 	tilde.bars
 		.transition()
 		.duration(800)
@@ -165,7 +197,60 @@ tilde.animate.endLoop = function(selection) {
 		.attr('width',function(d){
 			return tilde.barmax
 		})
-		.call(endall,tilde.animate.findJobs)
+		.attr('opacity',function(d,i){
+			if (tilde.choice_slots[i+1]) {
+				if (tilde.choice_slots[i] && tilde.choice_slots[i+2]) {
+					return 1
+				} else {
+					return 0
+				}
+			} else {
+				return 0.4
+			}
+		})
+		.call(endall,tilde.animate.ensureClosure)
 }
+
+tilde.animate.ensureClosure = function() {
+	tilde.bars
+		.transition()
+		.duration(0)
+	tilde.bars
+		.transition()
+		.duration(0)
+	tilde.bars
+		.transition()
+		.duration(0)
+		.delay(function(d,i){
+			return 0
+		})
+		.attr('x',function(d){
+			d.barx = (tilde.width - tilde.margin.left - tilde.margin.right)/2 +tilde.spacing*2
+			d.start = 0
+			return d.barx
+		})
+		.attr('y',function(d){
+			return tilde.slots_y(d.count) + tilde.spacing*2
+		})
+		.attr('height',function(d){
+			return tilde.barheight
+		})
+		.attr('width',function(d){
+			return tilde.barmax
+		})
+		.attr('opacity',function(d,i){
+			if (tilde.choice_slots[i+1]) {
+				if (tilde.choice_slots[i] && tilde.choice_slots[i+2]) {
+					return 1
+				} else {
+					return 0
+				}
+			} else {
+				return 0.4
+			}
+		})
+		.call(endall,tilde.animate.drawSelection)
+}
+
 tilde.buildFrame()
 tilde.animate.prePick()

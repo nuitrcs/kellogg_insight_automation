@@ -17,5 +17,30 @@ tilde.query.selectAll = function(source,input_array) {
 	}
 }
 tilde.query.prepareData = function() {
-	
+	var data = tilde.current_selection;
+	var selection = tilde.query.select('auto_data',data.c)
+	selection.selected = true
+    var similars = tilde.query.selectAll('auto_data',selection.s)
+    similars.push(selection)
+    similars.sort(function(a,b){
+    	return b.r - a.r
+    })
+    var assignment = 1,
+    	i;
+	tilde.choice_slots = {}
+    for (i = 0; i < 11; i++) {
+    	if (similars[i].selected) {
+    		tilde.choice_slots[assignment] = true
+    		assignment++
+    		tilde.choice_slots[assignment] = true
+    		similars[i].assignment = assignment
+    		assignment++
+    		tilde.choice_slots[assignment] = true
+    	} else {
+    		similars[i].assignment = assignment
+    	}
+    	assignment++
+    }
+    tilde.current_selection = similars
+    tilde.animate.endLoop()
 }
