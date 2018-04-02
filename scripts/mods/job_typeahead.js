@@ -21,18 +21,15 @@ $('#job_dropdown .typeahead').typeahead({
     templates: {
         empty: [
           '<div class="empty-message">',
-            'Unable to find any occupations with current query, please try again',
+            "No results, try something else...",
           '</div>'
         ].join('\n')
       }
 });
 
 $('#job_dropdown .typeahead').bind('typeahead:selected', function(obj, datum, name) {      
-    var selection = datum;
-    console.log(selection)
-    selection = tilde.query.select('auto_data',selection.c)
-    var similars = tilde.query.selectAll('auto_data',selection.s)
-    console.log(similars)
+    tilde.current_selection = datum
+    tilde.query.prepareData()
 });
 
 // https://twitter.github.io/typeahead.js/examples/

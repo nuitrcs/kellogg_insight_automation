@@ -1,16 +1,67 @@
 body {
+    font-size: 5.5vw;
     font-family: Arial, sans-serif;
+    overflow:hidden;
+}
+
+.tilde-centered {
+    position: absolute;
+    left: 5%;
+    right:5%;
+    width: 90%;
+}
+#job_svg {
+    position:relative;
+    top:1vw;
+}
+#job_chart {
+
+}
+.tilde-slots {
+}
+#job_dropdown {
+    display:block;
+    position:relative;
+}
+#tilde_headers {
+    position:relative;
+    width:100%;
+}
+#tilde_notice {
+    position:relative;
+    top:2vw;
+    font-size: 65%;
+}
+/* Create two equal columns that floats next to each other */
+.tilde-header {
+    position:relative;
+    font-size: 65%;
+    font-weight: bold;
+    float: left;
+    width: 50%;
+    padding-top: 1vw;
+    bottom:-2vw;
+}
+.tilde-center-text {
+    text-align: center;
+}
+.tilde-centerslot {
+    stroke-width:0 !important;
+}
+
+.twitter-typeahead {
+    width:100%;
 }
 
 .tt-input,
 .tt-hint {
-    width: 396px;
-    height: 30px;
-    padding: 8px 12px;
-    font-size: 24px;
-    line-height: 30px;
+    width: 94%;
+    height: 5vw;
+    padding: 2vw 2.5vw;
+    font-size: 100%;
+    line-height: 5vw;
     border: 2px solid #ccc;
-    border-radius: 8px;
+    border-radius: 1.5vw;
     outline: none;
 }
 
@@ -23,20 +74,20 @@ body {
 }
 
 .tt-menu {
-    width: 422px;
-    margin-top: 12px;
-    padding: 8px 0;
+    width: 100%;
+    margin-top: 1.5vw;
+    padding: 1.5vw 0;
     background-color: #fff;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    border-radius: 1.5vw;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
 .tt-suggestion {
-    padding: 3px 20px;
-    font-size: 18px;
-    line-height: 24px;
+    padding: 1vw 3.5vw;
+    font-size: 70%;
+    line-height: 4vw;
 }
 
 .tt-suggestion.tt-cursor {

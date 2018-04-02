@@ -16,3 +16,6 @@ tilde.query.selectAll = function(source,input_array) {
 		return tilde[source][input]
 	}
 }
+tilde.query.prepareData = function() {
+	
+}
