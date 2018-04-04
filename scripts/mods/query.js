@@ -1,4 +1,5 @@
 tilde.query = {}
+tilde.unlocked = true
 
 tilde.query.select = function(source,input) {
 	return tilde[source][input]
@@ -18,29 +19,43 @@ tilde.query.selectAll = function(source,input_array) {
 }
 tilde.query.prepareData = function() {
 	var data = tilde.current_selection;
+	var severed_array = []
+	var severed = {}
 	var selection = tilde.query.select('auto_data',data.c)
-	selection.selected = true
-    var similars = tilde.query.selectAll('auto_data',selection.s)
-    similars.push(selection)
-    similars.sort(function(a,b){
+	severed.selected = true
+	severed.r = selection.r
+	severed.n = selection.n
+	severed.d = selection.d
+	severed.s = selection.s
+	severed.assignment = undefined
+
+    var similars = tilde.query.selectAll('auto_data',severed.s)
+    similars.forEach(function(d){
+    	var obj = {}
+    	obj.selected = false
+    	obj.r = d.r
+		obj.n = d.n
+		obj.d = d.d
+		obj.s = d.s
+		obj.assignment = undefined
+		severed_array.push(obj)
+    })
+
+    severed_array.push(severed)
+    severed_array.sort(function(a,b){
     	return b.r - a.r
     })
     var assignment = 1,
     	i;
-	tilde.choice_slots = {}
     for (i = 0; i < 11; i++) {
-    	if (similars[i].selected) {
-    		tilde.choice_slots[assignment] = true
-    		assignment++
-    		tilde.choice_slots[assignment] = true
-    		similars[i].assignment = assignment
-    		assignment++
-    		tilde.choice_slots[assignment] = true
+    	if (severed_array[i].selected) {
+    		tilde.choice_slot = assignment
+    		severed_array[i].assignment = assignment
     	} else {
-    		similars[i].assignment = assignment
+    		severed_array[i].assignment = assignment
     	}
     	assignment++
     }
-    tilde.current_selection = similars
+    tilde.current_selection = severed_array
     tilde.animate.endLoop()
 }

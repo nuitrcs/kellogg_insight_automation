@@ -27,9 +27,14 @@ $('#job_dropdown .typeahead').typeahead({
       }
 });
 
-$('#job_dropdown .typeahead').bind('typeahead:selected', function(obj, datum, name) {      
-    tilde.current_selection = datum
-    tilde.query.prepareData()
+$('#job_dropdown .typeahead').bind('typeahead:selected', function(obj, datum, name) {  
+    if (tilde.unlocked) {
+        tilde.unlocked = false
+        tilde.current_selection = datum
+        tilde.query.prepareData()
+        $('input').blur()
+    }    
+    
 });
 
 // https://twitter.github.io/typeahead.js/examples/

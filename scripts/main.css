@@ -1,7 +1,6 @@
 body {
     font-size: 5.5vw;
     font-family: Arial, sans-serif;
-    overflow:hidden;
 }
 
 .tilde-centered {
@@ -17,7 +16,18 @@ body {
 #job_chart {
 
 }
-.tilde-slots {
+
+.tilde-selected-name {
+    font-weight: bold;
+    text-align: center;
+}
+
+.tilde-name {
+    text-align:right;
+}
+
+.tilde-slots:hover {
+    cursor:pointer;
 }
 #job_dropdown {
     display:block;
@@ -32,7 +42,7 @@ body {
     top:2vw;
     font-size: 65%;
 }
-/* Create two equal columns that floats next to each other */
+
 .tilde-header {
     position:relative;
     font-size: 65%;
@@ -48,6 +58,48 @@ body {
 .tilde-centerslot {
     stroke-width:0 !important;
 }
+
+.tooltip {
+    position: absolute;
+    display: none;
+    font-size: 50%;
+    height: auto;
+    background: none repeat scroll 0 0 #ffffff;
+    border: none;
+    padding: 2px;
+    text-align: center;
+    z-index: 9999;
+    max-width: 35vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .twitter-typeahead {
     width:100%;
