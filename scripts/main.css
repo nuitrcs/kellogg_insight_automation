@@ -89,7 +89,6 @@ body {
     border: none;
     padding: 2px;
     text-align: right;
-    z-index: 9999;
     width: 46vw;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -161,12 +160,14 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 1.5vw;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    z-index: 9999;
 }
 
 .tt-suggestion {
     padding: 1vw 3.5vw;
     font-size: 70%;
     line-height: 4vw;
+    z-index: 9999;
 }
 
 .tt-suggestion.tt-cursor {
