@@ -291,7 +291,6 @@ tilde.animate.endLoop = function(selection) {
 }
 
 tilde.animate.restartLoop = function() {
-	console.log('restarting')
 	d3.selectAll("*").transition().delay(0)
 	d3.selectAll("*").transition('move_bars').delay(0)
 	tilde.bars
