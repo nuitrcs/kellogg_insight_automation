@@ -8,6 +8,7 @@ tilde.animate = {};
 tilde.tooltips = {};
 tilde.tooltip = d3.select("body").append("div").attr("class", "tooltip");
 tilde.desc_tooltip = d3.select("body").append("div").attr("class", "description_tooltip").style('opacity',0);
+tilde.lastloop = 0;
 
 tilde.buildFrame = function() {
 	var data = [];
@@ -152,11 +153,16 @@ tilde.animate.preLoop = function(selection) {
 			})
 			.each('end',function(d,i){
 				var me = this;
+				var now = Date.now()
 				if (!tilde.choice_slot+1) {
-					tilde.animate.preLoop(me)
-				} else {
-
+					if (now > tilde.lastloop) {
+						tilde.lastloop = now
+						tilde.animate.preLoop(me)
+					} else {
+						tilde.animate.restartLoop()
+					}
 				}
+				
 			})
 	}
 }
@@ -282,6 +288,23 @@ tilde.animate.endLoop = function(selection) {
 		})
 		.attr('width',0)
 		.attr('fill','white')
+}
+
+tilde.animate.restartLoop = function() {
+	console.log('restarting')
+	d3.selectAll("*").transition().delay(0)
+	d3.selectAll("*").transition('move_bars').delay(0)
+	tilde.bars
+		.attr('x',function(d){
+			d.barx = 0
+			d.start = 1
+			d.started = 0
+			return d.barx
+		})
+		.each(function(d,i){
+			var me = this;
+			tilde.animate.preLoop(me)
+		})
 }
 
 tilde.ensureClosure = function() {
