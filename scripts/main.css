@@ -3,13 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin:0;
 }
-
 #citations {
-    font-size: 40%;
+    font-size: 45%;
     text-align: center;
     color:grey;
 }
-
 .tilde-centered {
     position: absolute;
     left: 5%;
@@ -20,19 +18,13 @@ body {
     position:relative;
     top:1vw;
 }
-#job_chart {
-
-}
-
 .tilde-selected-name {
     font-weight: bold;
     text-align: center;
 }
-
 .tilde-name {
     text-align:right;
 }
-
 .tilde-clickable:hover {
     cursor:pointer;
 }
@@ -49,7 +41,6 @@ body {
     top:2vw;
     font-size: 65%;
 }
-
 .tilde-header {
     position:relative;
     font-size: 65%;
@@ -65,7 +56,6 @@ body {
 .tilde-centerslot {
     stroke-width:0 !important;
 }
-
 .tooltip {
     position: absolute;
     display: none;
@@ -78,7 +68,6 @@ body {
     z-index: 9999;
     max-width: 35vw;
 }
-
 .description_tooltip {
     position: absolute;
     display: none;
@@ -93,44 +82,14 @@ body {
     overflow:hidden;
     text-overflow: ellipsis;
 }
-
 .description_tooltip:hover {
     overflow:auto;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .twitter-typeahead {
     width:100%;
 }
-
 .tt-input,
 .tt-hint {
     width: 94%;
@@ -142,15 +101,12 @@ body {
     border-radius: 1.5vw;
     outline: none;
 }
-
 .tt-input {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-
 .tt-hint {
     color: #999;
 }
-
 .tt-menu {
     width: 100%;
     margin-top: 1.5vw;
@@ -162,14 +118,12 @@ body {
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
     z-index: 9999;
 }
-
 .tt-suggestion {
     padding: 1vw 3.5vw;
     font-size: 70%;
     line-height: 4vw;
     z-index: 9999;
 }
-
 .tt-suggestion.tt-cursor {
     color: #fff;
     background-color: #4E2A84;
