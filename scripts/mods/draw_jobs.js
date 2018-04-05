@@ -2,7 +2,7 @@ tilde.notices = {
 	"pre_pick": "Search to discover your job's risk of automation!<br>&nbsp;",
 	"option_chosen":"Calculating automation risk...<br>&nbsp;",
 	"finding_similars":"Finding similar jobs...<br>&nbsp;",
-	"subheading":"<b>Result</b>: Searched job + the ten most similar to it,<br>based on related skills involved."
+	"subheading":"<b>Result</b>: Average likelihood this job will be automated +<br>likelihood for the 10 most similar jobs, based on related skills."
 }
 
 tilde.colors = ["#951F24","#C62026","#DD5524","#EF8F1E","#F2E74A","#A0F582"] //["#951F24","#F2E3E4"]
