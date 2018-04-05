@@ -2,6 +2,7 @@ tilde.query = {}
 tilde.unlocked = true
 
 tilde.query.select = function(source,input) {
+	tilde[source][input].c = input
 	return tilde[source][input]
 }
 tilde.query.selectAll = function(source,input_array) {
@@ -10,10 +11,12 @@ tilde.query.selectAll = function(source,input_array) {
 			j = input_array.length,
 			i;
 		for (i = 0; i < j; i++) {
+			tilde[source][input_array[i]].c = input_array[i]
 			output.push(tilde[source][input_array[i]])
 		}
 		return output
 	} else {
+		tilde[source][input].c = input
 		return tilde[source][input]
 	}
 }
@@ -27,6 +30,7 @@ tilde.query.prepareData = function() {
 	severed.n = selection.n
 	severed.d = selection.d
 	severed.s = selection.s
+	severed.c = selection.c
 	severed.assignment = undefined
 
     var similars = tilde.query.selectAll('auto_data',severed.s)
@@ -37,6 +41,7 @@ tilde.query.prepareData = function() {
 		obj.n = d.n
 		obj.d = d.d
 		obj.s = d.s
+		obj.c = d.c
 		obj.assignment = undefined
 		severed_array.push(obj)
     })

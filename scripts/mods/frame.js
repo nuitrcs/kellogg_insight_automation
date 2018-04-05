@@ -7,7 +7,7 @@ tilde.spacing = tilde.windowwidth*0.008;
 tilde.animate = {};
 tilde.tooltips = {};
 tilde.tooltip = d3.select("body").append("div").attr("class", "tooltip");
-tilde.desc_tooltip = d3.select("body").append("div").attr("class", "tooltip");
+tilde.desc_tooltip = d3.select("body").append("div").attr("class", "description_tooltip").style('opacity',0);
 
 tilde.buildFrame = function() {
 	var data = [];
@@ -37,9 +37,14 @@ tilde.buildFrame = function() {
 		container = chart.parent();
 
 	$(window).on("resize", function() {
-		var targetWidth = container.width();
+		var targetWidth = container.width(),
+			targetHeight = Math.round(targetWidth / aspect);
 		chart.attr("width", targetWidth);
-		chart.attr("height", Math.round(targetWidth / aspect));
+		chart.attr("height", targetHeight);
+		if (+tilde.desc_tooltip.style('opacity')) {
+			console.log(tilde.desc_tooltip.style('opacity'))
+			tilde.tooltips.showDesc(targetHeight)
+		}
 	}).trigger("resize");	
 
 	tilde.g = tilde.job_svg.append('g')
@@ -54,9 +59,6 @@ tilde.buildFrame = function() {
 			return 'tilde_g_'+d3.select(this).attr('data-count')
 		})
 		.classed('tilde-slots',true)
-		.on('click',function(d,i){
-			tilde.animate.select(+d3.select(this).attr('data-count'))
-		})
 		
 	tilde.boxes = tilde.slots.append('rect')
 		.attr('id',function(d){
@@ -172,6 +174,9 @@ tilde.animate.endLoop = function(selection) {
 		.style('opacity',0)
 	d3.selectAll('.tilde-bar')
 		.attr('opacity',0.4)
+	d3.selectAll('.tilde-search-text')
+		.remove()
+	tilde.tooltips.closeDesc()
 	tilde.slots
 		.transition()
 		.duration(800)
@@ -277,9 +282,6 @@ tilde.animate.endLoop = function(selection) {
 		})
 		.attr('width',0)
 		.attr('fill','white')
-		.call(endall,function(d,i){
-			console.log('fills moved!')
-		})
 }
 
 tilde.ensureClosure = function() {
@@ -287,6 +289,5 @@ tilde.ensureClosure = function() {
 		tilde.animate.drawSelection()
 	}
 }
-
 tilde.buildFrame()
 tilde.animate.prePick()

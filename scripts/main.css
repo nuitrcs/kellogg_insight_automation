@@ -1,6 +1,7 @@
 body {
-    font-size: 5.5vw;
+    font-size: 5.3vw;
     font-family: Arial, sans-serif;
+    margin:0;
 }
 
 .tilde-centered {
@@ -26,7 +27,7 @@ body {
     text-align:right;
 }
 
-.tilde-slots:hover {
+.tilde-clickable:hover {
     cursor:pointer;
 }
 #job_dropdown {
@@ -72,6 +73,26 @@ body {
     max-width: 35vw;
 }
 
+.description_tooltip {
+    position: absolute;
+    display: none;
+    font-size: 50%;
+    color: #323232;
+    max-height:17.5vw;
+    background: none repeat scroll 0 0 #E6E6E6;
+    border: none;
+    padding: 2px;
+    text-align: right;
+    z-index: 9999;
+    width: 46vw;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+.description_tooltip:hover {
+    overflow:auto;
+}
+
 
 
 
@@ -108,10 +129,10 @@ body {
 .tt-input,
 .tt-hint {
     width: 94%;
-    height: 5vw;
+    height: 5.5vw;
     padding: 2vw 2.5vw;
-    font-size: 100%;
-    line-height: 5vw;
+    font-size: 90%;
+    line-height: 5.5vw;
     border: 2px solid #ccc;
     border-radius: 1.5vw;
     outline: none;
