@@ -4,6 +4,12 @@ body {
     margin:0;
 }
 
+#citations {
+    font-size: 40%;
+    text-align: center;
+    color:grey;
+}
+
 .tilde-centered {
     position: absolute;
     left: 5%;
