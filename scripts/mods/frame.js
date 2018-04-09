@@ -14,13 +14,13 @@ tilde.buildFrame = function() {
 	var data = [];
 	var domain = []
 
-	for (var i = 1; i <= 11; i++) {
+	for (var i = 1; i <= 13; i++) {
 		var obj = {'count':i}
 		data.push(obj);
 		domain.push(i);
 	}
 
-	tilde.slots_y = d3.scale.ordinal().rangeBands([0,tilde.height*0.84])
+	tilde.slots_y = d3.scale.ordinal().rangeBands([0,tilde.height*0.975])
 		.domain(domain);
 
 	tilde.job_svg = d3.select('#job_svg')
@@ -132,7 +132,7 @@ tilde.animate.preLoop = function(selection) {
 	if (!tilde.choice_slot+1) {
 		d3.select(selection)
 			.transition('move_bars')
-			.duration(2200)
+			.duration(2031)
 			.delay(function(d,i){
 				if (!d.started) {
 					d.started = 1
@@ -168,6 +168,7 @@ tilde.animate.preLoop = function(selection) {
 }
 
 tilde.animate.endLoop = function(selection) {
+	d3.selectAll('#tilde_g_12, #tilde_g_13').remove()
 	tilde.animate.notice('option_chosen')
 	d3.selectAll("*").transition().delay(0)
 	d3.selectAll("*").transition('move_bars').delay(0)
