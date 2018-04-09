@@ -109,6 +109,7 @@ tilde.animate.brightenBar = function(unit,speed) {
 tilde.animate.select = function(input) {
 	var delay = 1000
 	tilde.tooltips.closeDesc()
+	tilde.tooltips.mouseout()
 	if (input) {
 		delay = 0
 		tilde.current_slot = input
@@ -455,14 +456,6 @@ tilde.animate.drawSelection = function() {
 		drawStaging(data[i],i)
 	}
 	
-}
-
-tilde.animate.explainSelection = function() {
-
-}
-
-tilde.animate.drawSimilars = function() {
-
 }
 
 tilde.tooltips.title = function(d) {
